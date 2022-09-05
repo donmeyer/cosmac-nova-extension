@@ -1,0 +1,220 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<syntax name="cosmac">
+    <meta>
+        <name>Cosmac Assembler</name>
+        <type>compiled</type>
+        <preferred-file-extension>src</preferred-file-extension>
+    </meta>
+
+    <detectors>
+        <extension priority="1.0">src</extension>
+    </detectors>
+
+    <indentation>
+        <increase>
+            <expression>^\s*&lt;(([^!/?]|%)(?!.+?([/%]&gt;|&lt;/.+?&gt;))|[%!]--\s*$)</expression>
+        </increase>
+        <decrease>
+            <expression>^\s*(&lt;/[^&gt;]+&gt;|--&gt;|--%&gt;)</expression>
+        </decrease>
+    </indentation>
+
+    <comments>
+        <single>
+            <expression>..</expression>
+        </single>
+    </comments>
+
+    <scopes>
+        <include syntax="self" collection="comments" />
+        <include syntax="self" collection="keywords" />
+        <include syntax="self" collection="syntax" />
+        <include syntax="self" collection="identifiers" />
+        <include syntax="self" collection="values" />
+        <include syntax="self" collection="strings" />
+    </scopes>
+
+    <collections>
+        <!-- Comments -->
+        <collection name="comments">
+            <scope name="cosmac.comment.single" spell-check="true">
+                <expression>\.\.(.*)$</expression>
+                <capture number="1" name="cosmac.comment.content" />
+            </scope>
+        </collection>
+
+        <!-- Values -->
+        <collection name="values">
+            <scope name="cosmac.value.number">
+                <expression>\b[0-9]+\b</expression>
+            </scope>
+            <scope name="cosmac.value.number">
+                <expression>\b[0-9a-fA-F]+H\b</expression>
+            </scope>
+        </collection>
+
+
+        <collection name="strings">
+            <scope name="cosmac.string.single-quoted">
+                <starts-with>
+                    <expression>(&apos;)</expression>
+                    <capture number="1" name="cosmac.string.single-quoted.delimiter" />
+                </starts-with>
+                <ends-with>
+                    <expression>(&apos;)</expression>
+                    <capture number="1" name="cosmac.string.single-quoted.delimiter" />
+                </ends-with>
+                <subscopes>
+                    <scope name="cosmac.string.single-quoted.escape">
+                        <expression>\\(?:\\|&apos;|n|r|t|b|f)</expression>
+                    </scope>
+                </subscopes>
+            </scope>
+        </collection>
+
+        <!-- Identifiers -->
+        <collection name="identifiers">
+            <scope name="cosmac.identifier">
+            <expression>\b[a-zA-Z_][A-Za-z0-9_]*\b</expression>
+        </scope>
+        </collection>
+
+        <!-- Syntax -->
+        <collection name="syntax">
+            <scope name="cosmac.bracket.parenthesis.open">
+                <symbol type="block">
+                    <context behavior="start" group="parenthesis" />
+                </symbol>
+                <expression>\(</expression>
+            </scope>
+            <scope name="cosmac.bracket.parenthesis.close">
+                <symbol type="block">
+                    <context behavior="end" group="parenthesis" />
+                </symbol>
+                <expression>\)</expression>
+            </scope>
+        </collection>
+
+        <!-- Keywords -->
+        <collection name="keywords">
+            <scope name="cosmac.keyword">
+                <strings>
+                    <!-- Register Operations -->
+                    <string>INC</string>
+                    <string>DEC</string>
+                    <string>IRX</string>
+                    <string>GLO</string>
+                    <string>PLO</string>
+                    <string>GHI</string>
+                    <string>PHI</string>
+                    <!-- Memory reference -->
+                    <string>LDN</string>
+                    <string>LDA</string>
+                    <string>LDX</string>
+                    <string>LDXA</string>
+                    <string>LDI</string>
+                    <string>STR</string>
+                    <string>STXD</string>
+                    <!-- Logic Operations -->
+                    <string>OR</string>
+                    <string>ORI</string>
+                    <string>XRI</string>
+                    <string>AND</string>
+                    <string>ANI</string>
+                    <string>SHRC</string>
+                    <string>RSHR</string>
+                    <string>SHL</string>
+                    <string>SHLC</string>
+                    <string>RSHL</string>
+                    <!-- Arithmetic Operations -->
+                    <string>ADD</string>
+                    <string>ADI</string>
+                    <string>ADC</string>
+                    <string>ADCI</string>
+                    <string>SD</string>
+                    <string>SDI</string>
+                    <string>SDB</string>
+                    <string>SDBI</string>
+                    <string>SM</string>
+                    <string>SMI</string>
+                    <string>SMB</string>
+                    <string>SMBI</string>
+                    <!-- Branch Instructions - Short Branch -->
+                    <string>BR</string>
+                    <string>NBR</string>
+                    <string>BZ</string>
+                    <string>BNZ</string>
+                    <string>BDF</string>
+                    <string>BPZ</string>
+                    <string>BGE</string>
+                    <string>BNF</string>
+                    <string>BM</string>
+                    <string>BL</string>
+                    <string>BQ</string>
+                    <string>BNQ</string>
+                    <string>B1</string>
+                    <string>BN1</string>
+                    <string>B2</string>
+                    <string>BN2</string>
+                    <string>B3</string>
+                    <string>BN3</string>
+                    <string>B4</string>
+                    <string>BN4</string>
+                    <!-- Branch Instructions - Long Branch -->
+                    <string>LBR</string>
+                    <string>NLBR</string>
+                    <string>LBZ</string>
+                    <string>LBNZ</string>
+                    <string>LBDF</string>
+                    <string>LBNF</string>
+                    <string>LBQ</string>
+                    <string>LBNQ</string>
+                    <!-- Skip Instructions -->
+                    <string>SKP</string>
+                    <string>LSKP</string>
+                    <string>LSZ</string>
+                    <string>LSNZ</string>
+                    <string>LSDF</string>
+                    <string>LSNF</string>
+                    <string>LSQ</string>
+                    <string>LSNQ</string>
+                    <string>LSIE</string>
+                    <!-- Control Instructions -->
+                    <string>IDL</string>
+                    <string>NOP</string>
+                    <string>SEP</string>
+                    <string>SEX</string>
+                    <string>SEQ</string>
+                    <string>REQ</string>
+                    <string>SAV</string>
+                    <string>MARK</string>
+                    <string>RET</string>
+                    <string>DIS</string>
+                </strings>
+            </scope>
+            <scope name="cosmac.keyword">
+                <expression>\b(?:OUT|INP)\s[1-7]\b</expression>
+            </scope>
+            <scope name="cosmac.keyword.modifier">
+                <expression>\bA\.[0-1]</expression>
+            </scope>
+            <scope name="cosmac.keyword.modifier">
+                <expression>\bR[0-9A-F]\b</expression>
+            </scope>
+            <scope name="cosmac.keyword.statement">
+                <strings>
+                    <string>ORG</string>
+                    <string>EQU</string>
+                    <string>DC</string>
+                    <string>PAGE</string>
+                </strings>
+            </scope>
+            <scope name="cosmac.operator">
+                <strings>
+                    <string>+</string>
+                    <string>-</string>
+                </strings>
+            </scope>
+        </collection>
+    </collections>
+</syntax>

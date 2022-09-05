@@ -1,0 +1,8 @@
+{
+    "identifier": "sgsw.Cosmac",
+    "name": "Cosmac Assembler",
+    "organization": "Don Meyer",
+    "description": "Basic syntax coloring and completions for Cosmac assembly source code",
+    "version": "1.0",
+    "categories": ["languages"]
+}

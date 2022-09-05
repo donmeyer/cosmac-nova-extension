@@ -1,0 +1,188 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<completions>
+    <provider>
+        <syntax>cosmac</syntax>syntax>
+        <selector>*:not(string,comment)</selector>
+
+        <!-- Don't suggest opcode mnemonics as arguments for opcodes.  -->
+        <!-- I'm sure there is some way to accomplish this using the selector, but I failed to find it. Brute-force seems to work though. -->
+        <expression>(?&lt;=\s)(?&lt;!(?:IDLE|LDN|INC|DEC|BR|BQ|BZ|BDF|BPZ|BGE|B1|B2|B3|B4|NBR|SKP|BNQ|BNZ|BNF|BM|BL|BN1|BN2|BN3|BN4|LDA|STR|IRX|OUT|INP|RET|DIS|LDXA|STXD|ADC|SDB|SHRC|RSHR|SMB|SAV|MARK|REQ|SEQ|ADCI|SDBI|SHLC|RSHL|SMBI|GLO|GHI|PLO|PHI|LBR|LBQ|LBZ|LBDF|NOP|LSNQ|LSNZ|LSNF|LSKP|NLBR|LBNQ|LBNZ|LBNF|LSIE|LSQ|LSZ|LSDF|SEP|SEX|LDX|OR|AND|XOR|ADD|SD|SHR|SM|LDI|ORI|ANI|XRI|ADI|SDI|SHL|SMI)\s)\b[a-zA-Z_][a-zA-Z0-9_]*</expression>
+
+        <set>cosmac.statements</set>
+        <set>cosmac.keywords</set>
+    </provider>
+
+    <!-- Keywords -->
+    <set name="cosmac.keywords" symbol="keyword">
+        <behavior>
+            <append> </append>
+        </behavior>
+
+        <!-- Register Operations -->
+        <completion string="INC" />
+        <completion string="DEC" />
+        <completion string="IRX" />
+        <completion string="GLO" />
+        <completion string="PLO" />
+        <completion string="GHI" />
+        <completion string="PHI" />
+        <!-- Memory reference -->
+        <completion string="LDN" />
+        <completion string="LDA" />
+        <completion string="LDX" />
+        <completion string="LDXA" />
+        <completion string="LDI" />
+        <completion string="STR" />
+        <completion string="STXD" />
+        <!-- Logic Operations -->
+        <completion string="OR" />
+        <completion string="ORI" />
+        <completion string="XRI" />
+        <completion string="AND" />
+        <completion string="ANI" />
+        <completion string="SHRC" />
+        <completion string="RSHR" />
+        <completion string="SHL" />
+        <completion string="SHLC" />
+        <completion string="RSHL" />
+        <!-- Arithmetic Operations -->
+        <completion string="ADD" />
+        <completion string="ADI" />
+        <completion string="ADC" />
+        <completion string="ADCI" />
+        <completion string="SD" />
+        <completion string="SDI" />
+        <completion string="SDB" />
+        <completion string="SDBI" />
+        <completion string="SM" />
+        <completion string="SMI" />
+        <completion string="SMB" />
+        <completion string="SMBI" />
+        <!-- Branch Instructions - Short Branch -->
+        <completion string="BR" />
+        <completion string="NBR" />
+        <completion string="BZ" />
+        <completion string="BNZ" />
+        <completion string="BDF" />
+        <completion string="BPZ" />
+        <completion string="BGE" />
+        <completion string="BNF" />
+        <completion string="BM" />
+        <completion string="BL" />
+        <completion string="BQ" />
+        <completion string="BNQ" />
+        <completion string="B1" />
+        <completion string="BN1" />
+        <completion string="B2" />
+        <completion string="BN2" />
+        <completion string="B3" />
+        <completion string="BN3" />
+        <completion string="B4" />
+        <completion string="BN4" />
+        <!-- Branch Instructions - Long Branch -->
+        <completion string="LBR" />
+        <completion string="NLBR" />
+        <completion string="LBZ" />
+        <completion string="LBNZ" />
+        <completion string="LBDF" />
+        <completion string="LBNF" />
+        <completion string="LBQ" />
+        <completion string="LBNQ" />
+        <!-- Skip Instructions -->
+        <completion string="SKP" />
+        <completion string="LSKP" />
+        <completion string="LSZ" />
+        <completion string="LSNZ" />
+        <completion string="LSDF" />
+        <completion string="LSNF" />
+        <completion string="LSQ" />
+        <completion string="LSNQ" />
+        <completion string="LSIE" />
+        <!-- Control Instructions -->
+        <completion string="IDL" />
+        <completion string="NOP" />
+        <completion string="SEP" />
+        <completion string="SEX" />
+        <completion string="SEQ" />
+        <completion string="REQ" />
+        <completion string="SAV" />
+        <completion string="MARK" />
+        <completion string="RET" />
+        <completion string="DIS" />
+    </set>
+
+    <set name="cosmac.statements" symbol="statement">
+        <completion string="ORG">
+            <behavior>
+                <append> </append>
+                </behavior>
+        </completion>
+
+        <completion string="EQU">
+            <behavior>
+                <append> </append>
+                </behavior>
+        </completion>
+
+        <completion string="DC">
+            <behavior>
+                <append> </append>
+                </behavior>
+        </completion>
+
+        <completion string="PAGE" />
+    </set>
+
+
+    <provider>
+        <syntax>cosmac</syntax>syntax>
+        <selector>*:not(string,comment,keyword)</selector>
+
+        <!-- Suggest registers for these opcodes. -->
+        <expression>(?&lt;=(?:INC|DEC|GLO|PLO|GHI|PHI|LDN|LDA|STR|SEP|SEX)\s)\b[a-zA-Z_][a-zA-Z0-9_]*</expression>
+
+        <set>cosmac.registers</set>
+    </provider>
+
+    <!-- Registers -->
+    <set name="cosmac.registers" symbol="keyword">
+        <!-- Register Operations -->
+        <completion string="R0" />
+        <completion string="R1" />
+        <completion string="R2" />
+        <completion string="R3" />
+        <completion string="R4" />
+        <completion string="R5" />
+        <completion string="R6" />
+        <completion string="R7" />
+        <completion string="R8" />
+        <completion string="R9" />
+        <completion string="RA" />
+        <completion string="RB" />
+        <completion string="RC" />
+        <completion string="RD" />
+        <completion string="RE" />
+        <completion string="RF" />
+    </set>
+
+
+    <provider>
+        <syntax>cosmac</syntax>syntax>
+        <selector>*:not(string,comment)</selector>
+
+        <!-- Suggest the byte-address operators as arguments for the LDI opcode -->
+        <expression>(?&lt;=LDI\s)\b[a-zA-Z_][a-zA-Z0-9_]*</expression>
+
+        <set>cosmac.addr</set>
+    </provider>
+
+    <!-- Address -->
+    <set name="cosmac.addr" symbol="keyword">
+        <behavior>
+            <append>($[])</append>
+        </behavior>
+
+        <completion string="A.0" />
+        <completion string="A.1" />
+    </set>
+</completions>
