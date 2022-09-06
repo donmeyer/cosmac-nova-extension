@@ -118,9 +118,11 @@
                     <!-- Logic Operations -->
                     <string>OR</string>
                     <string>ORI</string>
+                    <string>XOR</string>
                     <string>XRI</string>
                     <string>AND</string>
                     <string>ANI</string>
+                    <string>SHR</string>
                     <string>SHRC</string>
                     <string>RSHR</string>
                     <string>SHL</string>

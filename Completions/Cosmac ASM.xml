@@ -37,9 +37,11 @@
         <!-- Logic Operations -->
         <completion string="OR" />
         <completion string="ORI" />
+        <completion string="XOR" />
         <completion string="XRI" />
         <completion string="AND" />
         <completion string="ANI" />
+        <completion string="SHR" />
         <completion string="SHRC" />
         <completion string="RSHR" />
         <completion string="SHL" />
