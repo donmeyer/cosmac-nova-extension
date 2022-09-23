@@ -1,5 +1,5 @@
 {
-    "identifier": "sgsw.Cosmac",
+    "identifier": "com.sgsw.cosmac",
     "name": "Cosmac Assembler",
     "organization": "Don Meyer",
     "description": "Basic syntax coloring and completions for Cosmac 1802 assembly source code",
