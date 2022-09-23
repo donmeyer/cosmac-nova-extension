@@ -1,5 +1,5 @@
 
-**Cosmac Assembler** provides syntax highlighting and autocompletion for the **RCA Cosmac 1802 An Important Language**.
+**Cosmac Assembler** provides syntax highlighting and autocompletion for the **RCA Cosmac 1802**.
 
 
 ## Language Support
