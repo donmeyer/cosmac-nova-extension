@@ -3,7 +3,7 @@
     "name": "Cosmac Assembler",
     "organization": "Don Meyer",
     "description": "Basic syntax coloring and completions for Cosmac 1802 assembly source code",
-    "version": "1.0",
+    "version": "1.1",
     "categories": ["languages"],
     "license": "MIT",
     "repository": "https://github.com/donmeyer/cosmac-nova-extension",
