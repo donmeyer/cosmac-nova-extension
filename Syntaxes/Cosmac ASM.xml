@@ -75,8 +75,9 @@
         <!-- Identifiers -->
         <collection name="identifiers">
             <scope name="cosmac.identifier">
-            <expression>\b[a-zA-Z_][A-Za-z0-9_]*\b</expression>
-        </scope>
+                <expression>\b[a-zA-Z_][A-Za-z0-9_]*\b</expression>
+                <symbol type="identifier" scope="global" anonymous="true" />
+            </scope>
         </collection>
 
         <!-- Syntax -->
@@ -197,10 +198,10 @@
             <scope name="cosmac.keyword">
                 <expression>\b(?:OUT|INP)\s[1-7]\b</expression>
             </scope>
-            <scope name="cosmac.keyword.modifier">
+            <scope name="cosmac.identifier.argument.name">
                 <expression>\bA\.[0-1]</expression>
             </scope>
-            <scope name="cosmac.keyword.modifier">
+            <scope name="cosmac.identifier.argument.name">
                 <expression>\bR[0-9A-F]\b</expression>
             </scope>
             <scope name="cosmac.keyword.statement">
@@ -212,10 +213,10 @@
                 </strings>
             </scope>
             <scope name="cosmac.operator">
-                <strings>
-                    <string>+</string>
-                    <string>-</string>
-                </strings>
+                <expression>(\+|\-)</expression>
+            </scope>
+            <scope name="cosmac.keyword.modifier">
+                <expression>(\$)</expression>
             </scope>
         </collection>
     </collections>

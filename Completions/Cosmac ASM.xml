@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <completions>
     <provider>
-        <syntax>cosmac</syntax>syntax>
+        <syntax>cosmac</syntax>
         <selector>*:not(string,comment)</selector>
 
         <!-- Don't suggest opcode mnemonics as arguments for opcodes.  -->
@@ -11,6 +11,19 @@
         <set>cosmac.statements</set>
         <set>cosmac.keywords</set>
     </provider>
+
+
+
+    <provider name="identifier">
+        <syntax>cosmac</syntax>
+        <selector>*:not(string,comment)</selector>
+        <expression>\b[a-zA-Z]*</expression>
+        <symbols type="identifier"/>
+    </provider>
+
+
+
+
 
     <!-- Keywords -->
     <set name="cosmac.keywords" symbol="keyword">
