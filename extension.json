@@ -2,7 +2,11 @@
     "identifier": "sgsw.Cosmac",
     "name": "Cosmac Assembler",
     "organization": "Don Meyer",
-    "description": "Basic syntax coloring and completions for Cosmac assembly source code",
+    "description": "Basic syntax coloring and completions for Cosmac 1802 assembly source code",
     "version": "1.0",
-    "categories": ["languages"]
-}
+    "categories": ["languages"],
+    "author": "Don Meyer",
+    "license": "MIT",
+    "repository": "https://github.com/donmeyer/cosmac-nova-extension",
+    "bugs": "https://github.com/donmeyer/cosmac-nova-extension/issues"
+  }
